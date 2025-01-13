@@ -48,3 +48,7 @@ This program sets the Z offset for the tool setter using a gauge bar. PLI value 
 ## SET-MASTER-XY.MIN
 **Designed for Okuma Mill machines with mechanical touch setter (example Renishaw RTS, OTS, or Okuma Contact Tool Setter)**
 This program saves the current location of X and Y for the touch setter.
+
+## OROTA.SSB
+**Designed for Okuma Mill machines with a 4th axis set as the A axis.**
+I haven't done a lot of testing with this one. I have several changes I hope to make, like a center line shift. Currently the Z and Y axis must be the centerline of the A axis. 
