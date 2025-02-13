@@ -69,12 +69,13 @@ This program sets the Z offset for the tool setter using a gauge bar. PLI value 
 **Designed for Okuma Mill machines with mechanical touch setter (example Renishaw RTS, OTS, or Okuma Contact Tool Setter)**
 This program saves the current location of X and Y for the touch setter. It's important to note that this does not affect Renishaw gauging cycles.
 ## OROTA
-**Designed for Okuma Mill machines with a 4th axis set as the A axis.**
-
-`CALL OROTA PX=0 PY=0 PZ=0 PA=0 PSA=0`
-PX, PY, PZ 
-These values function as a parallel shift function. They are typically not used except under the condition where the relative program zero is changing. For example, if at A zero, the program zero is top left corner with the Z zero on the face, then at A90 the zero is again, top left corner with Z zero on the new visible face, then the relative zero point has changed. This would require the operator to either, set additional work offsets, or use the parallel shift function. 
-PA=
-This value is the absolute solution for A axis rotation. Under most cases, this will match the A axis value.
-PSA=
-This value is the absolute solution for the A axis rotation zero. Under most cases this value will not be used. However, it can be very useful for updating zero points that are found in positions other than A zero. For example, if the programed part has a reference to a bore that is positioned at A-20 relative to the programmed zero, the operator can command a PA=0 PSA=-20 and the new offset will take into account the zero point shift for the rotary axis. Keep in mind that rotating planes like this will require updating all 3 linier axis prior to using PSA values as if any of the 3 values are incorrect, the reference plane will not calculate correctly.
+**This macro is designed for Okuma Mill machines with a 4th axis configured as the A axis.**
+'CALL OROTA PX=0 PY=0 PZ=0 PA=0 PSA=0'
+-PX, PY, PZ: These parameters serve as a parallel shift function. They are generally not required unless the relative program zero changes.
+    -Example: If at A0, the program zero is at the top-left corner with Z zero on the face, and at A90, the zero is again at the top-left corner but with Z zero on the newly visible face, then the relative zero point has shifted.
+    -In such cases, the operator must either set additional work offsets or use the parallel shift function to adjust for this change.
+-PA= (Absolute A-Axis Rotation Solution): This value represents the absolute A-axis rotation. In most cases, it will match the A-axis value directly.
+-PSA= (Absolute A-Axis Rotation Zero Solution): This parameter is typically not needed, but it becomes useful for updating zero points located at positions other than A0.
+    -Example: If a programmed part references a bore positioned at A-20 relative to the programmed zero, the operator can set PA=0 PSA=-20. This adjustment ensures the new offset accounts for the rotary axis shift.
+⚠ Important Consideration:
+When rotating planes using PSA, all three linear axes (X, Y, and Z) must be updated before applying the PSA value. If any of these values are incorrect, the reference plane will not calculate correctly.
